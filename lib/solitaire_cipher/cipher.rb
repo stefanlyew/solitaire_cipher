@@ -20,7 +20,10 @@ module SolitaireCipher
       string.split(//).map { |letter| ALPHABET[letter] }
     end
 
-    def map_to_number
+    def combine_message message, keystream
+      combined = [message, keystream]
+      combined = combined.transpose.map {|x| x.reduce(:+)}
+      combined.map { |x| (x>26) ? (x-26) : x }
     end
   end
 end

@@ -26,9 +26,17 @@ describe SolitaireCipher::Cipher do
   end
 
   describe '#map_to_numbers' do
-    it "splits a string into an array of its letters" do
+    it "splits a string into an array of its letters and maps it to its position in the alphabet" do
       letters = cipher.letterize
       expect(cipher.map_to_numbers(letters)).to eq [3, 15, 4, 5, 9, 14, 18, 21, 2, 25, 12, 9, 22, 5, 12, 15, 14, 7, 5, 18]
+    end
+  end
+
+  describe '#combine_message' do
+    it 'takes two arrays of integers and then adds each  member corresponding by index' do
+      message = [3, 15, 4, 5, 9, 14, 18, 21, 2, 25, 12, 9, 22, 5, 12, 15, 14, 7, 5, 18]
+      keystream = [4, 23, 10, 24, 8, 25, 18, 6, 4, 7, 20, 13, 19, 8, 16, 21, 21, 18, 24, 10]
+      expect(cipher.combine_message message, keystream).to eq [7, 12, 14, 3, 17, 13, 10, 1, 6, 6, 6, 22, 15, 13, 2, 10, 9, 25, 3, 2]
     end
   end
 end
