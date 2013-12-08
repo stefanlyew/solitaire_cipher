@@ -16,8 +16,8 @@ module SolitaireCipher
       #clean.scan(/.{5}|.+/).join(" ")
     end
 
-    def map_to_numbers
-      letterize.split(//).map { |letter| ALPHABET[letter] }
+    def map_to_numbers string
+      string.split(//).map { |letter| ALPHABET[letter] }
     end
 
     def map_to_number
