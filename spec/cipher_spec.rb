@@ -39,4 +39,11 @@ describe SolitaireCipher::Cipher do
       expect(cipher.combine_message message, keystream).to eq [7, 12, 14, 3, 17, 13, 10, 1, 6, 6, 6, 22, 15, 13, 2, 10, 9, 25, 3, 2]
     end
   end
+
+  describe '#map_to_letters' do
+    it "takes an array of integers and turns to letters based on corresponding position in alphabet" do
+      combined_message = [7, 12, 14, 3, 17, 13, 10, 1, 6, 6, 6, 22, 15, 13, 2, 10, 9, 25, 3, 2]
+      expect(cipher.map_to_letters(combined_message)).to eq "GLNCQMJAFFFVOMBJIYCB"
+    end
+  end
 end

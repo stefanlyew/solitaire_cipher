@@ -25,5 +25,11 @@ module SolitaireCipher
       combined = combined.transpose.map {|x| x.reduce(:+)}
       combined.map { |x| (x>26) ? (x-26) : x }
     end
+
+    def map_to_letters integers
+      numbers = ALPHABET.invert
+      integers = integers.map { |integer| numbers[integer] }
+      integers.join
+    end
   end
 end
