@@ -1,8 +1,8 @@
 module SolitaireCipher
+  ALPHABET = Hash[('A'..'Z').to_a.zip (1..26)]
   class Cipher
     attr_reader :message
 
-    ALPHABET = Hash[('A'..'Z').to_a.zip (1..26)]
 
     def initialize message
       @message = message
