@@ -13,7 +13,7 @@ module SolitaireCipher
       index = @deck.index(card)
       if index == @deck.length - 1
         #major bug fixed here
-        @deck.unshift(@deck[index]).pop
+        @deck.insert(1,@deck[index]).pop
       else
         @deck[index], @deck[index + 1] = @deck[index + 1], @deck[index]
       end
@@ -31,19 +31,29 @@ module SolitaireCipher
     end
 
     def count_cut
-      bottom_value = @deck[@deck.length-1] - 1
+      if @deck[@deck.length-1].is_a? String
+        bottom_value = 53 - 1
+      else
+        bottom_value = @deck[@deck.length-1] - 1
+      end
       cut = @deck.slice!(0..bottom_value)
       @deck.insert(@deck.length-1, cut).flatten!
       @deck
     end
 
     def output_letter
-      value = @deck.first
-      card = @deck[value] unless @deck[value].is_a? String
-      if card
-        card-= 26 if card > 26
+      if @deck.first.is_a? String
+        value = 53
+      else
+        value = @deck.first
       end
-      ALPHABET.invert[card]
+      card = @deck[value] 
+      if card
+        card = 53 if card.is_a? String
+        card-= 26 if card > 26
+        letter = ALPHABET.invert[card]
+      end
+      return letter
     end
 
   end

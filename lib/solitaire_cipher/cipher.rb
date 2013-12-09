@@ -3,7 +3,6 @@ module SolitaireCipher
   class Cipher
     attr_reader :message
 
-
     def initialize message
       @message = message
     end
@@ -30,6 +29,21 @@ module SolitaireCipher
       numbers = ALPHABET.invert
       integers = integers.map { |integer| numbers[integer] }
       integers.join
+    end
+    # Generates a keystream for the given +length+.
+    def generate_keystream( length )
+      deck = SolitaireCipher::Deck.new 
+      result = []
+      while result.length < length
+        deck.move('A')
+        deck.move('B')
+        deck.move('B')
+        deck.triple_cut
+        deck.count_cut
+        letter = deck.output_letter
+        result << letter unless letter.nil?
+      end
+      result.join
     end
   end
 end

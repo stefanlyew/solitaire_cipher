@@ -46,4 +46,10 @@ describe SolitaireCipher::Cipher do
       expect(cipher.map_to_letters(combined_message)).to eq "GLNCQMJAFFFVOMBJIYCB"
     end
   end
+
+  describe '#generate_keystream' do
+   it "uses Deck to make an encryption key" do
+    expect(cipher.generate_keystream(10)).to eq "DWJXHYRFDG"
+   end
+  end
 end
