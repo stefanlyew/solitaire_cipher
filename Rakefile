@@ -19,12 +19,14 @@ task :encrypt do
   keystream = cipher.map_to_numbers(keystream)
   combination = cipher.combine_message message, keystream
   hash = cipher.map_to_letters combination
+  hash = hash.scan(/.{5}|.+/).join(" ")
   puts hash
 end
 
 task :decrypt do
   puts "Please enter a message:"
   message = STDIN.gets
+  message.gsub!(' ','')
   #TODO Message Checker?
   cipher = SolitaireCipher::Cipher.new(message)
   letters = cipher.letterize
@@ -32,7 +34,7 @@ task :decrypt do
   keystream = cipher.generate_keystream(length)
   message = cipher.map_to_numbers(letters)
   keystream = cipher.map_to_numbers(keystream)
-  combination = cipher.combine_message message, keystream, false
+  combination = cipher.uncombine_message message, keystream
   hash = cipher.map_to_letters combination
   puts hash
 end
