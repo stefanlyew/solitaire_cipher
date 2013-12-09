@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = SolitaireCipher::VERSION
   spec.authors       = ["Stefan Lyew"]
   spec.email         = ["stefan.lyew@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{A Ruby implementation of Bruce Schneier's Solitaire Cipher}
+  spec.summary       = %q{For evading the NSA}
+  spec.homepage      = "https://github.com/stefanlyew/solitaire_cipher"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
