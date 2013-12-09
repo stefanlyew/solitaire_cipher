@@ -1,24 +1,26 @@
 # SolitaireCipher
 
-TODO: Write a gem description
+This is an implementation of Bruce Schneier's <a href="http://en.wikipedia.org/wiki/Solitaire_(cipher)">Solitaire Cipher</a>
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'solitaire_cipher'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install solitaire_cipher
+It is the first problem on [Ruby Quiz](http://rubyquiz.com/quiz1.html)
 
 ## Usage
 
-TODO: Write usage instructions here
+To encrypt a message:
+rake encrypt
+enter your message at prompt
+
+To decrypt a code:
+rake decrypt
+enter your code at prompt
+
+To run tests:
+rake spec
+
+the main files are
+lib/solitaire_cipher/cipher.rb
+and
+lib/solitaire_cipher/deck.rb
 
 ## Contributing
 

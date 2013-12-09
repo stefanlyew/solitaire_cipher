@@ -3,10 +3,13 @@ require 'rspec/core/rake_task'
 require_relative 'lib/helper'
 RSpec::Core::RakeTask.new('spec')
 
+#TODO Clean up specs
 desc "Run tests"
 task :default => :spec
 
-desc "Display sorted records from parsed Separated Value files"
+#TODO Refactor these into one uber task
+
+desc "Encrypts a message to secret code"
 task :encrypt do
   puts "Please enter a message:"
   message = STDIN.gets
@@ -23,6 +26,7 @@ task :encrypt do
   puts hash
 end
 
+desc "Decrypts a secret message"
 task :decrypt do
   puts "Please enter a message:"
   message = STDIN.gets
