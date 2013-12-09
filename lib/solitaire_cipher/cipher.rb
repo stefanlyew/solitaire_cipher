@@ -25,6 +25,19 @@ module SolitaireCipher
       combined.map { |x| (x>26) ? (x-26) : x }
     end
 
+    def uncombine_message message, keystream
+      prep = []
+      message.each_with_index do |x,i|
+        if x<=keystream[i]
+          prep<<x+26
+        else
+          prep<<x
+        end
+      end
+      combined = [prep, keystream]
+      combined = combined.transpose.map {|x| x.reduce(:-)}
+    end
+
     def map_to_letters integers
       numbers = ALPHABET.invert
       integers = integers.map { |integer| numbers[integer] }

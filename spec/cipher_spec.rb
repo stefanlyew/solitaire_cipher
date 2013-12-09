@@ -40,6 +40,15 @@ describe SolitaireCipher::Cipher do
     end
   end
 
+  describe '#uncombine_message' do
+    it 'takes two arrays of integers and then subtracts each  member corresponding by index' do
+      message = [7, 12, 14, 3, 17, 13, 10, 1, 6, 6, 6, 22, 15, 13, 2, 10, 9, 25, 3, 2 ]
+      keystream = [4, 23, 10, 24, 8, 25, 18, 6, 4, 7, 20, 13, 19, 8, 16, 21, 21, 18, 24, 10]
+      expect(cipher.uncombine_message message, keystream).to eq [3, 15, 4, 5, 9, 14, 18, 21, 2, 25, 12, 9, 22, 5, 12, 15, 14, 7, 5, 18]
+    end
+  end
+
+
   describe '#map_to_letters' do
     it "takes an array of integers and turns to letters based on corresponding position in alphabet" do
       combined_message = [7, 12, 14, 3, 17, 13, 10, 1, 6, 6, 6, 22, 15, 13, 2, 10, 9, 25, 3, 2]
